@@ -1,0 +1,16 @@
+cc_binary {
+    name: "aidl_test",
+    srcs: [
+        "aidl_test.cpp",
+    ],
+
+    shared_libs: [
+        "libui",
+        "libutils",
+        "libcutils",
+        "liblog",
+        "roger.test.demo-V1-ndk",
+        "libbinder",
+        "libbinder_ndk",
+    ],
+}
