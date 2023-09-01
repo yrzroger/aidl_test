@@ -9,8 +9,10 @@ cc_binary {
         "libutils",
         "libcutils",
         "liblog",
-        "roger.test.demo-V1-ndk",
+        "my.test.foo-V1-cpp",
         "libbinder",
         "libbinder_ndk",
     ],
+    
+    vendor: true,
 }

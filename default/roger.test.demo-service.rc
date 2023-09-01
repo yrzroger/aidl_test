@@ -1,4 +1,0 @@
-service roger.test.demo-service /vendor/bin/hw/roger.test.demo-service
-    class hal
-    user system
-    group graphics media

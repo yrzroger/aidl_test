@@ -1,3 +1,0 @@
-添加到正确位置
-# define hal_roger_test_demo_service
-type roger_test_demo_service, vendor_service, hal_service_type, service_manager_type

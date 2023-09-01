@@ -1,0 +1,4 @@
+service my.test.foo-service /vendor/bin/my.test.foo-service
+class hal
+user system
+group graphics media

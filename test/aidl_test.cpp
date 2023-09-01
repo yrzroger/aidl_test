@@ -1,5 +1,5 @@
 /**
- * Author: Roger
+ * Author: 二的次方
  */
 
 #define LOG_TAG "aidl_test"
@@ -12,35 +12,24 @@
 #include <log/log.h>
 #include <utils/Log.h>
 
-#include <aidl/roger/test/demo/ITestDemo.h>
-#include <android/binder_manager.h>
 
-using AidlITestDemo = aidl::roger::test::demo::ITestDemo;
+#include <binder/IServiceManager.h>
+#include <my/test/IFoo.h>
+
+using my::test::IFoo;
 
 int main()
 {
-    const std::string service_name = std::string(AidlITestDemo::descriptor) + "/default";
+    const ::android::String16 service_name = IFoo::descriptor;
     // waiting until service comes up
-    std::shared_ptr<AidlITestDemo> mAidlITestDemo;
-    mAidlITestDemo = AidlITestDemo::fromBinder(
-            ndk::SpAIBinder(AServiceManager_waitForService(service_name.c_str())));
-    if (!mAidlITestDemo) {
-        fprintf(stderr, "Failed to get AIDL test demo service");
-        return -1;
-    }
+    ::android::sp<IFoo> foo = ::android::waitForService<IFoo>(service_name);
 
-    const auto status1 = mAidlITestDemo->setActiveConfig(99);
-    if (!status1.isOk()) {
-        fprintf(stderr, "getActiveConfig failed %s \n", status1.getDescription().c_str());
-    }
+    foo->setFoo(99);
 
-    int config = 0;
-    const auto status2 = mAidlITestDemo->getActiveConfig(&config);
-    if (!status2.isOk()) {
-        fprintf(stderr, "getActiveConfig failed %s \n", status2.getDescription().c_str());
-    } else {
-        fprintf(stderr, "getActiveConfig success %d \n", config);
-    }
+    int x = 0;
+    foo->getFoo(&x);
+    fprintf(stderr, "getFoo %d \n", x);
+
 
     getchar();
 

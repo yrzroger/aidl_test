@@ -1,3 +1,0 @@
-添加到正确位置
-# bind binary file to the selinux type
-/vendor/bin/hw/roger\.test\.demo-service  u:object_r:roger_test_demo_exec:s0

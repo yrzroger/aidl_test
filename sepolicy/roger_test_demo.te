@@ -1,8 +1,0 @@
-type roger_test_demo, domain;
-type roger_test_demo_exec, exec_type, vendor_file_type, file_type;
-
-init_daemon_domain(roger_test_demo)
-
-add_service(roger_test_demo, roger_test_demo_service)
-
-allow roger_test_demo servicemanager:binder { call transfer };

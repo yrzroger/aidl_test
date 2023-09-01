@@ -1,3 +1,0 @@
-添加到正确位置
-# bind an AIDL service name to the selinux type
-roger.test.demo.ITestDemo/default u:object_r:roger_test_demo_service:s0
